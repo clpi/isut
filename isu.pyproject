@@ -1,0 +1,26 @@
+{
+    "files": [
+        "./main.py",
+
+        "./isu/__init__.py",
+        "./isu/app.py",
+
+        "./isu/view/__init__.py",
+        "./isu/view/task.py",
+        "./isu/view/window.py",
+
+        "./isu/models/__init__.py",
+        "./isu/models/demo.py",
+        "./isu/models/audio.py",
+
+        "./isu/ui/__init__.py",
+        "./isu/ui/audio.py",
+        "./isu/ui/window.py",
+        "./isu/ui/about.py",
+        "./isu/ui/prefs.py",
+        "./isu/ui/prog.py",
+        "./isu/ui/.py",
+
+
+    ]
+}

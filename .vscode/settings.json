@@ -1,0 +1,12 @@
+{
+    "qtForPython.designer.path": "C:\\Users\\chris\\i\\.venv\\Lib\\site-packages\\PySide6\\designer.exe",
+    "qtForPython.uic.path": "C:\\Users\\chris\\i\\.venv\\Lib\\site-packages\\PySide6\\uic.exe",
+    "qtForPython.rcc.liveExecution": true,
+    "qtForPython.uic.args": [
+        "-o \"${workspaceFolder}${pathSeparator}isu${pathSeparator}ui${pathSeparator}${fileBasenameNoExtension}.py\"",
+        "-g python",
+    ],
+    "qtForPython.uic.liveExecution": true,
+    // "qtForPython.lupdate.liveExecution": true,
+
+}
