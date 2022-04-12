@@ -124,42 +124,87 @@
         <bool>true</bool>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinimumSize</enum>
+        </property>
+        <property name="leftMargin">
+         <number>3</number>
+        </property>
+        <property name="topMargin">
+         <number>3</number>
+        </property>
+        <property name="rightMargin">
+         <number>3</number>
+        </property>
+        <property name="bottomMargin">
+         <number>3</number>
+        </property>
         <item>
-         <layout class="QVBoxLayout" name="dataLayout">
-          <property name="spacing">
-           <number>2</number>
+         <widget class="QSplitter" name="splitter_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QTabWidget" name="tasksTabs">
+          <widget class="QSplitter" name="splitter">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>325</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>375</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>375</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QTabWidget" name="dataLoadTabs">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
+              <verstretch>8</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>350</width>
+              <width>325</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>324234</width>
+              <width>239824</width>
               <height>16777215</height>
              </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>375</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="statusTip">
+             <string/>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
             </property>
             <property name="tabPosition">
              <enum>QTabWidget::North</enum>
@@ -167,42 +212,54 @@
             <property name="currentIndex">
              <number>0</number>
             </property>
-            <widget class="QWidget" name="dataLoadedTab">
+            <widget class="QWidget" name="demoLoadedTab">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>16777214</width>
+               <width>375</width>
                <height>16777215</height>
               </size>
              </property>
+             <property name="statusTip">
+              <string>Currently loaded demos available to edit</string>
+             </property>
              <attribute name="title">
-              <string>Data</string>
+              <string>Demo</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_34">
               <property name="spacing">
-               <number>4</number>
+               <number>2</number>
               </property>
               <property name="leftMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_23">
+               <layout class="QHBoxLayout" name="dataLoadedTopBtns">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
                 <property name="leftMargin">
-                 <number>8</number>
+                 <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>8</number>
+                 <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label">
+                 <widget class="QLabel" name="demoLoadedLabel">
                   <property name="font">
                    <font>
                     <pointsize>8</pointsize>
@@ -211,7 +268,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Loaded Data</string>
+                   <string>Demo Files</string>
                   </property>
                   <property name="indent">
                    <number>0</number>
@@ -232,7 +289,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="browseButton">
+                 <widget class="QPushButton" name="browseDemoBtn">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -244,6 +301,9 @@
                     <pointsize>8</pointsize>
                     <kerning>true</kerning>
                    </font>
+                  </property>
+                  <property name="statusTip">
+                   <string>Browse for .demo file</string>
                   </property>
                   <property name="text">
                    <string>Browse</string>
@@ -259,7 +319,7 @@
                </layout>
               </item>
               <item>
-               <widget class="QTableWidget" name="loadedDataTree">
+               <widget class="QTableWidget" name="demoLoadedTree">
                 <property name="minimumSize">
                  <size>
                   <width>350</width>
@@ -284,11 +344,14 @@
                </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_19">
+               <layout class="QHBoxLayout" name="dataLoadedBtns">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
-                 <widget class="QPushButton" name="browseDemoBtn">
+                 <widget class="QPushButton" name="demoRecentBtn">
                   <property name="text">
-                   <string>Demo</string>
+                   <string>Recent</string>
                   </property>
                   <property name="autoDefault">
                    <bool>false</bool>
@@ -302,21 +365,28 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="browseAudioBtn">
+                 <widget class="QPushButton" name="demoSavedBtn">
                   <property name="text">
-                   <string>Audio</string>
+                   <string>Saved</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="browseScriptBtn">
+                 <widget class="QPushButton" name="demoRemoveBtn">
                   <property name="text">
-                   <string>Script</string>
+                   <string>Remove</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_12">
+                 <widget class="QPushButton" name="demoLoadBtn">
+                  <property name="text">
+                   <string>Load</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="demoEtcBtn">
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -338,32 +408,50 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="dataPrestTab">
+            <widget class="QWidget" name="audioLoadedTab">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>375</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="statusTip">
+              <string>Currently loaded audio folders available to attach to demo files</string>
+             </property>
              <attribute name="title">
-              <string>Presets</string>
+              <string>Audio</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_36">
               <property name="spacing">
-               <number>4</number>
+               <number>2</number>
               </property>
               <property name="leftMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_30">
+               <layout class="QHBoxLayout" name="audioLoadedTopBtns">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
                 <item>
-                 <widget class="QLabel" name="label_7">
+                 <widget class="QLabel" name="audioLoadedLabel">
                   <property name="text">
-                   <string>Task Presets</string>
+                   <string>Audio Folders</string>
                   </property>
                  </widget>
                 </item>
@@ -381,10 +469,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox"/>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_54">
+                 <widget class="QPushButton" name="browseAudioBtn">
                   <property name="text">
                    <string>Browse</string>
                   </property>
@@ -393,7 +478,7 @@
                </layout>
               </item>
               <item>
-               <widget class="QTreeWidget" name="dataTree">
+               <widget class="QTreeWidget" name="audioLoadedTree">
                 <column>
                  <property name="text">
                   <string notr="true">Name</string>
@@ -412,160 +497,250 @@
                </widget>
               </item>
               <item>
-               <widget class="QWidget" name="widget_7" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_29">
+               <widget class="QWidget" name="audioLoadedBtns" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_21">
-                   <item>
-                    <widget class="QPushButton" name="demoLoadBtn">
-                     <property name="text">
-                      <string>Load</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_50">
-                     <property name="text">
-                      <string>Save</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_51">
-                     <property name="text">
-                      <string>Edit</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButton_52">
-                     <property name="text">
-                      <string>Remove</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="toolButton_13">
-                     <property name="text">
-                      <string>...</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <widget class="QPushButton" name="audioRecentBtn">
+                   <property name="text">
+                    <string>Recent</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="audioSavedBtn">
+                   <property name="text">
+                    <string>Saved</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="audioLoadBtn">
+                   <property name="text">
+                    <string>Load</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="audioRemoveBtn">
+                   <property name="text">
+                    <string>Remove</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="audioEtcBtn">
+                   <property name="text">
+                    <string>...</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </widget>
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="dataSavedTab">
+            <widget class="QWidget" name="scriptsLoadedTab">
              <attribute name="title">
-              <string>Saved</string>
+              <string>Script</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_21">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
               <item>
-               <widget class="QWidget" name="widget_6" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_24">
-                 <property name="spacing">
-                  <number>4</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>5</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>5</number>
-                 </property>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_25">
-                   <item>
-                    <widget class="QLabel" name="label_3">
-                     <property name="text">
-                      <string>Job history</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_3">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QToolButton" name="toolButton_15">
-                     <property name="text">
-                      <string>...</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QTableView" name="tableView"/>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_26"/>
-                 </item>
-                </layout>
-               </widget>
+               <layout class="QHBoxLayout" name="scriptsLoadedTopBtns">
+                <item>
+                 <widget class="QLabel" name="scriptsLoadedLabel">
+                  <property name="text">
+                   <string>Script Files</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="browseScriptBtn">
+                  <property name="text">
+                   <string>Browse</string>
+                  </property>
+                  <property name="autoDefault">
+                   <bool>true</bool>
+                  </property>
+                  <property name="default">
+                   <bool>true</bool>
+                  </property>
+                  <property name="flat">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="scriptsLoadedTree"/>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="scriptsLoadedBtns">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="scriptRecentsBtn">
+                  <property name="statusTip">
+                   <string>Browse recent demo files</string>
+                  </property>
+                  <property name="text">
+                   <string>Recents</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="scriptsSavedBtn">
+                  <property name="statusTip">
+                   <string>Browse bookmarked demo files</string>
+                  </property>
+                  <property name="text">
+                   <string>Saved</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="scriptRemoveBtn">
+                  <property name="statusTip">
+                   <string>Remove selected demo file</string>
+                  </property>
+                  <property name="text">
+                   <string>Remove</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="scriptLoadBtn">
+                  <property name="statusTip">
+                   <string>Load a new .demo file</string>
+                  </property>
+                  <property name="text">
+                   <string>Load</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="scriptsEtcBtn">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
            </widget>
-          </item>
-          <item>
-           <widget class="QTabWidget" name="tasksTabs_2">
+           <widget class="QTabWidget" name="taskTabs">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>350</width>
+              <width>325</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>23434</width>
+              <width>375</width>
               <height>16777215</height>
              </size>
             </property>
             <property name="cursor">
              <cursorShape>ArrowCursor</cursorShape>
             </property>
-            <property name="currentIndex">
-             <number>0</number>
+            <property name="statusTip">
+             <string/>
             </property>
-            <widget class="QWidget" name="tab_11">
+            <property name="currentIndex">
+             <number>1</number>
+            </property>
+            <widget class="QWidget" name="taskStepsTab">
+             <property name="maximumSize">
+              <size>
+               <width>375</width>
+               <height>16777215</height>
+              </size>
+             </property>
              <attribute name="title">
               <string>Steps</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_30">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_35">
+               <layout class="QHBoxLayout" name="taskStepsTopBtns">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
                 <property name="leftMargin">
-                 <number>8</number>
+                 <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>8</number>
+                 <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_11">
+                 <widget class="QLabel" name="taskStepsTitle">
                   <property name="font">
                    <font>
                     <pointsize>8</pointsize>
@@ -595,7 +770,17 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="addStepButton">
+                 <widget class="QComboBox" name="stepTargetCombo">
+                  <property name="placeholderText">
+                   <string>Demo</string>
+                  </property>
+                  <property name="frame">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="addStepBtn">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -618,6 +803,9 @@
                   </property>
                   <property name="acceptDrops">
                    <bool>false</bool>
+                  </property>
+                  <property name="statusTip">
+                   <string>Add a new step to the task queue</string>
                   </property>
                   <property name="autoFillBackground">
                    <bool>false</bool>
@@ -648,7 +836,10 @@
                </layout>
               </item>
               <item>
-               <widget class="QTableWidget" name="stepsTable">
+               <widget class="QTableWidget" name="taskStepsTable">
+                <property name="statusTip">
+                 <string>Currently queued tasks to run</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -700,30 +891,55 @@
                </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <layout class="QHBoxLayout" name="taskStepsBtns">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
-                 <widget class="QPushButton" name="pushButton_5">
+                 <widget class="QPushButton" name="stepUpBtn">
+                  <property name="statusTip">
+                   <string>Move currently selected step up in queue</string>
+                  </property>
+                  <property name="text">
+                   <string>Up</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="stepDownBtn">
+                  <property name="statusTip">
+                   <string>Move selected step down in queue</string>
+                  </property>
+                  <property name="text">
+                   <string>Down</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="deleteStepBtn">
+                  <property name="statusTip">
+                   <string>Delete selected step</string>
+                  </property>
                   <property name="text">
                    <string>Delete</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_7">
-                  <property name="text">
-                   <string>Reset</string>
+                 <widget class="QPushButton" name="copyStepBtn">
+                  <property name="statusTip">
+                   <string>Duplicate selected step</string>
                   </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButton_6">
                   <property name="text">
                    <string>Copy</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="runButton">
+                 <widget class="QPushButton" name="runStepsBtn">
+                  <property name="statusTip">
+                   <string>Execute all steps in task queue</string>
+                  </property>
                   <property name="autoFillBackground">
                    <bool>false</bool>
                   </property>
@@ -742,7 +958,10 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_2">
+                 <widget class="QToolButton" name="etcStepsBtn">
+                  <property name="statusTip">
+                   <string>More queue options</string>
+                  </property>
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -761,30 +980,30 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="tab_12">
+            <widget class="QWidget" name="taskHistoryTab">
              <attribute name="title">
               <string>History</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_37">
               <property name="spacing">
-               <number>5</number>
+               <number>2</number>
               </property>
               <property name="leftMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <property name="rightMargin">
-               <number>5</number>
+               <number>4</number>
               </property>
               <property name="bottomMargin">
-               <number>5</number>
+               <number>2</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_31">
+               <layout class="QHBoxLayout" name="taskHistoryTopBtns">
                 <item>
-                 <widget class="QLabel" name="label_8">
+                 <widget class="QLabel" name="taskHistoryLabel">
                   <property name="text">
                    <string>Loaded Data</string>
                   </property>
@@ -804,7 +1023,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QComboBox" name="comboBox_4">
+                 <widget class="QComboBox" name="taskHistoryCombo">
                   <item>
                    <property name="text">
                     <string>Demo</string>
@@ -823,7 +1042,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_55">
+                 <widget class="QPushButton" name="browseTaskHistoryBtn">
                   <property name="text">
                    <string>Browse</string>
                   </property>
@@ -835,37 +1054,40 @@
                <widget class="QTableView" name="tableView_2"/>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_20">
+               <layout class="QHBoxLayout" name="taskHistoryBtns">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <item>
-                 <widget class="QPushButton" name="pushButton_45">
+                 <widget class="QPushButton" name="taskHistoryLoadBtn">
                   <property name="text">
                    <string>Load</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_46">
+                 <widget class="QPushButton" name="taskHistorySaveBtn">
                   <property name="text">
                    <string>Save</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_48">
+                 <widget class="QPushButton" name="taskHistoryEditBtn">
                   <property name="text">
                    <string>Edit</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_47">
+                 <widget class="QPushButton" name="taskHistoryRemoveBtn">
                   <property name="text">
                    <string>Remove</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_14">
+                 <widget class="QToolButton" name="taskHistoryEtcBtn">
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -875,7 +1097,7 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="tasksUndoTab">
+            <widget class="QWidget" name="taskUndoTab">
              <property name="maximumSize">
               <size>
                <width>16777213</width>
@@ -908,7 +1130,7 @@
                <number>5</number>
               </property>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_24">
+               <layout class="QHBoxLayout" name="taskUndoTopBtns">
                 <item>
                  <widget class="QLabel" name="label_4">
                   <property name="text">
@@ -948,567 +1170,749 @@
              </layout>
             </widget>
            </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QWidget" name="opsLayout" native="true">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777212</height>
-           </size>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <property name="spacing">
-            <number>2</number>
+          </widget>
+          <widget class="QWidget" name="opsView" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <property name="leftMargin">
-            <number>0</number>
+           <property name="minimumSize">
+            <size>
+             <width>425</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="topMargin">
-            <number>0</number>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777212</height>
+            </size>
            </property>
-           <property name="rightMargin">
-            <number>0</number>
+           <property name="baseSize">
+            <size>
+             <width>460</width>
+             <height>0</height>
+            </size>
            </property>
-           <property name="bottomMargin">
-            <number>0</number>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
            </property>
-           <item>
-            <widget class="QTabWidget" name="opsTabs">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="tabsClosable">
-              <bool>true</bool>
-             </property>
-             <property name="movable">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QFrame" name="infoView">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>23525</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_23">
-           <property name="spacing">
-            <number>2</number>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
            </property>
-           <property name="leftMargin">
-            <number>0</number>
+           <property name="autoFillBackground">
+            <bool>false</bool>
            </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QTabWidget" name="demoViewTabs">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>350</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>8</pointsize>
-               <kerning>true</kerning>
-              </font>
-             </property>
-             <property name="tabPosition">
-              <enum>QTabWidget::North</enum>
-             </property>
-             <property name="tabShape">
-              <enum>QTabWidget::Rounded</enum>
-             </property>
-             <property name="currentIndex">
-              <number>0</number>
-             </property>
-             <property name="elideMode">
-              <enum>Qt::ElideLeft</enum>
-             </property>
-             <widget class="QWidget" name="demoOverviewGroupPage1">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QTabWidget" name="opsTabs">
               <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>8</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="tabsClosable">
                <bool>true</bool>
               </property>
-              <attribute name="title">
-               <string>Demo Steps</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_26">
-               <property name="spacing">
-                <number>6</number>
-               </property>
-               <property name="leftMargin">
-                <number>5</number>
-               </property>
-               <property name="topMargin">
-                <number>5</number>
-               </property>
-               <property name="rightMargin">
-                <number>5</number>
-               </property>
-               <property name="bottomMargin">
-                <number>5</number>
-               </property>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_28">
-                 <property name="leftMargin">
-                  <number>8</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>8</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_6">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="text">
-                    <string>Steps</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="toolButton_5">
-                   <property name="text">
-                    <string>...</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QTreeWidget" name="infoDemoTree">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Index</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>TItle</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Audio</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Image</string>
-                  </property>
-                 </column>
-                </widget>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_18">
-                 <item>
-                  <widget class="QPushButton" name="addDemoStepBtn">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="text">
-                    <string>Add</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="delDemoStepBtn">
-                   <property name="text">
-                    <string>Remove</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="dupeDemoStepBtn">
-                   <property name="text">
-                    <string>Duplicate</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="toolButton_11">
-                   <property name="text">
-                    <string>...</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
+              <property name="movable">
+               <bool>true</bool>
+              </property>
              </widget>
-             <widget class="QWidget" name="demoMetadataTab">
-              <attribute name="title">
-               <string>Metadata</string>
-              </attribute>
-             </widget>
-            </widget>
-           </item>
-           <item>
-            <widget class="QTabWidget" name="propertyTabs">
-             <property name="minimumSize">
-              <size>
-               <width>350</width>
-               <height>0</height>
-              </size>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QSplitter" name="splitter_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>350</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QTabWidget" name="demoViewTabs">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>8</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>325</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>350</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+              <kerning>true</kerning>
+             </font>
+            </property>
+            <property name="statusTip">
+             <string/>
+            </property>
+            <property name="tabPosition">
+             <enum>QTabWidget::North</enum>
+            </property>
+            <property name="tabShape">
+             <enum>QTabWidget::Rounded</enum>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <property name="elideMode">
+             <enum>Qt::ElideLeft</enum>
+            </property>
+            <widget class="QWidget" name="demoStepsTab">
+             <property name="enabled">
+              <bool>true</bool>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>234243</width>
-               <height>16777215</height>
-              </size>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="font">
-              <font>
-               <pointsize>8</pointsize>
-               <kerning>true</kerning>
-              </font>
-             </property>
-             <property name="currentIndex">
-              <number>0</number>
-             </property>
-             <widget class="QWidget" name="stepPropsPage">
-              <attribute name="title">
-               <string>Properties</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
-               <property name="spacing">
-                <number>2</number>
-               </property>
-               <property name="leftMargin">
-                <number>3</number>
-               </property>
-               <property name="topMargin">
-                <number>3</number>
-               </property>
-               <property name="rightMargin">
-                <number>3</number>
-               </property>
-               <property name="bottomMargin">
-                <number>3</number>
-               </property>
-               <item>
-                <widget class="QStackedWidget" name="propStack">
-                 <property name="autoFillBackground">
-                  <bool>false</bool>
-                 </property>
-                 <property name="lineWidth">
-                  <number>0</number>
-                 </property>
-                 <property name="currentIndex">
-                  <number>0</number>
-                 </property>
-                 <widget class="QWidget" name="stepStackPage">
-                  <layout class="QVBoxLayout" name="verticalLayout_8">
-                   <property name="spacing">
-                    <number>2</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>3</number>
-                   </property>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_32">
-                     <property name="leftMargin">
-                      <number>8</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>8</number>
-                     </property>
-                     <item>
-                      <widget class="QLabel" name="label_9">
-                       <property name="text">
-                        <string>Step Info</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_10">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QToolButton" name="toolButton">
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <widget class="QTableWidget" name="tableWidget">
-                     <column>
-                      <property name="text">
-                       <string>Step index</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Section index</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>TP</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>CI</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Image</string>
-                      </property>
-                     </column>
-                     <column>
-                      <property name="text">
-                       <string>Hover</string>
-                      </property>
-                     </column>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_3">
-                     <item>
-                      <widget class="QPushButton" name="pushButton_3">
-                       <property name="text">
-                        <string>Reset</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_4">
-                       <property name="text">
-                        <string>More Info</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
+             <attribute name="title">
+              <string>Demo Steps</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_26">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="demoStepsTopBtns">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="demoStepsLabel">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="text">
+                   <string>Steps</string>
+                  </property>
                  </widget>
-                 <widget class="QWidget" name="sectStackPage">
-                  <layout class="QVBoxLayout" name="verticalLayout_3">
-                   <property name="spacing">
-                    <number>2</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>3</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>3</number>
-                   </property>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_29">
-                     <item>
-                      <widget class="QLabel" name="label_5">
-                       <property name="text">
-                        <string>Section Info</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_6">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QToolButton" name="toolButton_3">
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <widget class="QTableWidget" name="tableWidget_2">
-                     <row>
-                      <property name="text">
-                       <string>Name</string>
-                      </property>
-                     </row>
-                     <row>
-                      <property name="text">
-                       <string>Index</string>
-                      </property>
-                     </row>
-                     <row>
-                      <property name="text">
-                       <string>Audio</string>
-                      </property>
-                     </row>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_9">
-                     <item>
-                      <widget class="QPushButton" name="pushButton_13">
-                       <property name="text">
-                        <string>Reset</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_14">
-                       <property name="text">
-                        <string>More Info</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QToolButton" name="toolButton_4">
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="addDemoStepBtn">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="statusTip">
+                   <string>Add a new step/section to the demo file</string>
+                  </property>
+                  <property name="text">
+                   <string>Add</string>
+                  </property>
                  </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-             <widget class="QWidget" name="tab_5">
-              <attribute name="title">
-               <string>Preview</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_25">
-               <item>
-                <widget class="QGraphicsView" name="graphicsView"/>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_17">
-                 <item>
-                  <widget class="QPushButton" name="pushButton_38">
-                   <property name="text">
-                    <string>Reset</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_39">
-                   <property name="text">
-                    <string>More Info</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QToolButton" name="toolButton_10">
-                   <property name="text">
-                    <string>...</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="delDemoStepBtn">
+                  <property name="statusTip">
+                   <string>Remove selected step(s) to the demo file</string>
+                  </property>
+                  <property name="text">
+                   <string>Remove</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="demoStepsOptionsBtn">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTreeWidget" name="demoStepsTree">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="statusTip">
+                 <string>Selectable and modifiable step listing for selected demo</string>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>Index</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>TItle</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Audio</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Image</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="demoStepsBtns">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="pushButton_3">
+                  <property name="text">
+                   <string>Up</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_4">
+                  <property name="text">
+                   <string>Down</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_8">
+                  <property name="text">
+                   <string>Copy</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="dupeDemoStepBtn">
+                  <property name="statusTip">
+                   <string>Duplicate selected step or section</string>
+                  </property>
+                  <property name="text">
+                   <string>Duplicate</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="demoStepsMiscBtn">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
             </widget>
-           </item>
-          </layout>
+            <widget class="QWidget" name="demoMetadataTab">
+             <attribute name="title">
+              <string>Metadata</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="text">
+                   <string>Metadata</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton">
+                  <property name="text">
+                   <string>Edit</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTreeView" name="treeView"/>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="pushButton_6">
+                  <property name="text">
+                   <string>Reset</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_7">
+                  <property name="text">
+                   <string>Apply</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_2">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                  <property name="popupMode">
+                   <enum>QToolButton::MenuButtonPopup</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QTabWidget" name="propTabs">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>325</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>234243</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+              <kerning>true</kerning>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>Properties of selected step(s) or section(s)</string>
+            </property>
+            <property name="statusTip">
+             <string/>
+            </property>
+            <property name="whatsThis">
+             <string>Currently selected section/step properties</string>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="propsTab">
+             <attribute name="title">
+              <string>Properties</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QStackedWidget" name="propStack">
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="QWidget" name="stepStackPage">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>4</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>4</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="stepPageTopBtns">
+                    <property name="spacing">
+                     <number>4</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="stepPageLabel">
+                      <property name="text">
+                       <string>Step Info</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="stepPageOptionsBtn">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QTableWidget" name="stepPageTable">
+                    <property name="statusTip">
+                     <string>Properties of selected step(s) or section(s)</string>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>Step index</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Section index</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>TP</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>CI</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Image</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Hover</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="stepPageBtns">
+                    <item>
+                     <widget class="QPushButton" name="stepPageResetBtn">
+                      <property name="text">
+                       <string>Reset</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="stepPageInfoBtn">
+                      <property name="text">
+                       <string>More Info</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="sectStackPage">
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>4</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>4</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="sectPageTopBtns">
+                    <property name="spacing">
+                     <number>4</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>Section Info</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="sectPageLabel">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="sectPageOptionsBtn">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QTableWidget" name="sectInfoTable">
+                    <row>
+                     <property name="text">
+                      <string>Name</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>Index</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>Audio</string>
+                     </property>
+                    </row>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="sectPageBtns">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="sectPageResetBtn">
+                      <property name="text">
+                       <string>Reset</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="sectPageInfoBtn">
+                      <property name="text">
+                       <string>More Info</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="toolButton_4">
+                      <property name="text">
+                       <string>...</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="previewTab">
+             <attribute name="title">
+              <string>Preview</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_25">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QGraphicsView" name="graphicsView"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -1525,6 +1929,18 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>25</height>
+    </size>
+   </property>
    <property name="layoutDirection">
     <enum>Qt::RightToLeft</enum>
    </property>
@@ -1596,6 +2012,10 @@
     <property name="title">
      <string>Demo</string>
     </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave_current_state"/>
+    <addaction name="actionReset_changes"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1824,25 +2244,29 @@
     <string>Run current task</string>
    </property>
   </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave_current_state">
+   <property name="text">
+    <string>Save current state</string>
+   </property>
+  </action>
+  <action name="actionReset_changes">
+   <property name="text">
+    <string>Reset changes</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>browseButton</sender>
-   <signal>clicked()</signal>
-   <receiver>browseButton</receiver>
-   <slot>showMenu()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>387</x>
-     <y>89</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>menubar</sender>
    <signal>objectNameChanged(QString)</signal>
@@ -1872,6 +2296,70 @@
     <hint type="destinationlabel">
      <x>559</x>
      <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>browseDemoBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>browseDemoBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>taskStepsTable</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>opsTabs</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>540</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>35</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opsTabs</sender>
+   <signal>tabCloseRequested(int)</signal>
+   <receiver>taskStepsTable</receiver>
+   <slot>removeRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>448</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>225</x>
+     <y>549</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>opsTabs</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>taskStepsTable</receiver>
+   <slot>selectRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>448</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>126</x>
+     <y>459</y>
     </hint>
    </hints>
   </connection>

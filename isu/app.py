@@ -4,11 +4,7 @@ from isu.view.window import Win
 from typing import List, Type
 from isu.view import UiLoader
 from PySide6.QtWidgets import *
-
-def app() -> QCoreApplication:
-    match QApplication.instance():
-        case None: return QApplication(sys.argv)
-        case ins: return ins
+from isu.utils import app
 
 class Isu(QObject):
 
@@ -16,19 +12,24 @@ class Isu(QObject):
     def instance() -> QCoreApplication:
         return app()
 
-    app: QCoreApplication
+    app: QApplication
     win: QMainWindow
 
     def __init__(self) -> None:
-        self.app = app()
+        self.app = QApplication(sys.argv)
         self.win = Win()
+
+    def setStyle(self, sheet: str = "isu/ui/style.qss"):
+        with open(sheet, "r") as f:
+            style = f.read()
+            self.app.setStyle(style)
 
     def run(self):
         self.win.show()
         sys.exit(self.app.exec())
 
     def show(self):
-        self.app = self.instance()
+        app = self.instance()
         self.win = Win(None)
         self.win.show()
         sys.exit(self.app.exec())

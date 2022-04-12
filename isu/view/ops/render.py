@@ -1,36 +1,64 @@
 from operator import getitem
 import os, sys, pathlib
+import os, sys
+from isu.utils import show
+from pathlib import WindowsPath, Path
+from typing import Optional, Any, Type
+from PIL import Image
 from typing import Optional, Sequence, Dict, Any
 from PIL import Image
+from av import VideoFormat, VideoFrame, AudioFormat
 from PySide6.QtCore import *
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtGui import QAction
+from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from PySide6 import QtUiTools
-from isu.models.demo import Demo
-from isu.ui import UiLoad
-from isu.ui.ops.ops import OpUi
-from isu.operation.render import Format, Render
+from isu.ui.render import Ui_renderOp
+from PySide6.QtMultimedia import *
+from PySide6.QtMultimediaWidgets import *
 
 AudioFmt = ["mp3", "wav", "flac", "ogg"]
 
-class RenderOp(OpUi, QWidget):
+class RenderJob(QRunnable):
 
-    started = Signal(Render)
+    started = Signal()
 
-    def __init__(self, parent: QWidget | None) -> None:
-        QWidget.__init__(self, parent)
-        UiLoad().loadUi("render.ui", self, parent)
-        self.load_tabs()
+    def __init__(self, format, title, res, fps, dir) -> None:
+        super(RenderJob, self).__init__()
 
-    def load_tabs(self):
-        self.load_data_tab()
+    def run(self: QRunnable) -> None:
+        return super().run()
 
-    def load_data_tab(self):
-        self.renderTabTabs: QTabWidget
+class RenderOp(QTabWidget, Ui_renderOp):
+
+    def __init__(self, parent = None) -> None:
+        super(RenderOp, self).__init__(parent)
+        self.setupUi(self)
+        self.title: str = "Render"
+        self.loadWidgets()
+        self.loadConnections()
+
+    @staticmethod
+    def job() -> Type[QRunnable]:
+        return RenderJob
+
+    def outputPath(self) -> QFile:
+        dir = self.renderOutputDir.text()
+        title = self.renderOutputTitle.text()
+        return QFile(os.path.join(dir, title + "." + self.fmt().name.lower()))
+
+
+    def run(self) -> QRunnable:
+        return RenderJob(
+            res=(self.renderResH.value(), self.renderResW.value()),
+            fps=self.renderFpsSb.value(),
+            dir=pathlib.Path(self.renderOutputDir.text()),
+            format=self.fmt(),
+            title=self.renderOutputTitle.text(),
+            # with_audio=self.withAudioCb.isChecked(),
+            # with_cursor=self.withCursorCb.isChecked(),
+            # with_text=self.withTextCb.isChecked(),
+        )
+
+    def loadWidgets(self):
         self.renderOutputTitle: QLineEdit
         self.renderOutputFormat: QComboBox
         self.renderResH: QSpinBox
@@ -44,12 +72,15 @@ class RenderOp(OpUi, QWidget):
         self.renderBrowseDirBtn: QPushButton
         self.renderOutputDir: QLineEdit
 
+    def loadConnections(self):
         self.renderBrowseDirBtn.toggle.connect(self.browse_dir)
-
 
     @Slot(str, name="renderSetDir")
     def set_dir(self, dir: str):
         self.renderOutputDir.setText(dir)
+
+    def set_rtitle(self, t: str):
+        self.renderOutputTitleStr = t
 
     def browse_dir(self) -> pathlib.Path | None:
         try:
@@ -59,37 +90,8 @@ class RenderOp(OpUi, QWidget):
         except:
             return None
 
-        
-    def fmt(self) -> Format:
-        sel = self.renderOutputFormat.currentIndex()
-        return Format(sel)
+    # def fmt(self) -> Format:
+    #     sel = self.renderOutputFormat.currentIndex()
+    #     return Format(sel)
 
-    def outputPath(self) -> pathlib.Path:
-        dir = self.renderOutputDir.text()
-        title = self.renderOutputTitle.text()
-        return pathlib.Path(os.path.join(dir, title + "." + self.fmt().name.lower()))
-
-    def set_rtitle(self, t: str):
-        self.renderOutputTitleStr = t
-
-    def op(self) -> Render:
-        return Render(
-            res=(self.renderResH.value(), self.renderResW.value()),
-            fps=self.renderFpsSb.value(),
-            dir=pathlib.Path(self.renderOutputDir.text()),
-            format=self.fmt(),
-            title=self.renderOutputTitle.text(),
-            # with_audio=self.withAudioCb.isChecked(),
-            # with_cursor=self.withCursorCb.isChecked(),
-            # with_text=self.withTextCb.isChecked(),
-        )
-
-    Slot()
-    def on_beginning_op(self):
-        self.started.emit()
-
-
-    @staticmethod
-    def cbidx() -> int:
-        return 7
-
+show(__name__, RenderOp)

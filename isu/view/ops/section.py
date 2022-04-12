@@ -1,37 +1,42 @@
-# import os, sys
-# from typing import Optional, Sequence, Dict, Any
-# from PIL import Image
-# from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-#     QMetaObject, QObject, QPoint, QRect,
-#     QSize, QTime, QUrl, Qt)
-# from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-#     QFont, QFontDatabase, QGradient, QIcon,
-#     QImage, QKeySequence, QLinearGradient, QPainter,
-#     QPalette, QPixmap, QRadialGradient, QTransform)
-# from PySide6.QtWidgets import (
-#     QApplication, QSizePolicy, QWidget, QLabel, QFormLayout, QHBoxLayout,
-#     QVBoxLayout, QLineEdit, QLayout, QPushButton, QCheckBox, QComboBox, 
-#     QSpinBox, QStackedLayout, QStackedWidget, QFileDialog
-#     )
-# from isu.view import UiLoader
+import os, sys
+from isu import utils
+from pathlib import WindowsPath, Path
+from typing import Optional, Any, Type
+from PIL import Image
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from isu.ui.section import Ui_sectionOp
 
-# class SectionOp(QWidget):
+class SectionJob(QRunnable):
 
-#     ui: QWidget | None = None
-#     parent: Any = QCoreApplication.instance()
-#     index: int
-#     path: str
+    def __init__(self) -> None:
+        super(SectionJob, self).__init__()
 
-#     def __init__(self, parent: QWidget | None) -> None:
-#         QWidget.__init__(self, parent)
-#         UiLoad().loadUi("render.ui", self, parent)
+    def run(self: QRunnable) -> None:
+        return super().run()
 
-#     def loadUi(self):
-#         pass
+class SectionOp(QWidget, Ui_sectionOp):
 
-#     def op(self) -> Section:
-#         return Section()
+    def __init__(self, parent = None) -> None:
+        super(SectionOp, self).__init__(parent)
+        self.setupUi(self)
+        self.title: str = "Section"
+        self.loadWidgets()
+        self.loadConnections()
 
-#         # self.opsParamsStack.addWidget(self)
+    @staticmethod
+    def job() -> Type[QRunnable]:
+        return SectionJob
 
-#         # self.shellBrowseImgBtn.clicked.connect(self.browse_shell)
+    def run(self) -> QRunnable:
+        return SectionJob(
+        )
+
+    def loadWidgets(self):
+        pass
+
+    def loadConnections(self):
+        pass
+
+utils.show(__name__, SectionOp)

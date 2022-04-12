@@ -1,37 +1,35 @@
 import os, sys
 from pathlib import WindowsPath, Path
-from isu.ui import UiLoad
-from typing import Optional, Any
+from isu.utils import show
+from typing import Optional, Any, Type
 from PIL import Image
-from PySide6.QtCore import (
-    QFile, QMetaObject, QObject, QPoint, QRect,  QDir,
-    QSize, QTime, QUrl, Qt, QCoreApplication
-)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform
-)
-from PySide6.QtWidgets import (
-    QApplication, QSizePolicy, QWidget, QLabel, QFormLayout, QHBoxLayout,
-    QVBoxLayout, QLineEdit, QLayout, QPushButton, QCheckBox, QComboBox, 
-    QSpinBox, QStackedLayout, QStackedWidget, QFileDialog
-    )
-from isu.operation import Audio
-from isu.ui.ops.ops import OpUi
-from isu.ui import UiLoad
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from isu.ui.audio import Ui_audioOp
 
-class AudioOp(OpUi, QWidget):
-    uifile = QDir(os.path.dirname(os.path.realpath(__file__)))
+class AudioJob(QRunnable):
+
+    def __init__(self):
+        super(AudioJob, self).__init__()
+
+    def run(self: QRunnable) -> None:
+        return super().run()
+
+class AudioOp(QWidget, Ui_audioOp):
 
     def __init__(self, parent: QWidget | None) -> None:
-        QWidget.__init__(self, parent)
-        UiLoad().loadUi("audio.ui", self, parent)
-        self.load_ui()
-        self.load_widgets()
+        super(AudioOp, self).__init__(parent)
+        self.setupUi(self)
+        self.title: str = "Attach Audio"
 
-    def op(self) -> Audio:
-        return Audio()
+    @staticmethod
+    def job() -> Type[QRunnable]:
+        return AudioJob
+
+    def run(self) -> QRunnable:
+        a = AudioJob()
+        return a
 
     def load_ui(self):
         pass
@@ -46,3 +44,4 @@ class AudioOp(OpUi, QWidget):
     def cbidx() -> int:
         return 3
 
+show(__name__, AudioOp)

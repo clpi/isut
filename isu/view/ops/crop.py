@@ -1,51 +1,46 @@
 import os, sys
-from typing import Optional, Any, Tuple, List
-from pathlib import Path
+from isu.utils import show
+from pathlib import WindowsPath, Path
+from typing import Optional, Any, Type
 from PIL import Image
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QDir, QFile,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (
-    QApplication, QSizePolicy, QWidget, QLabel, QFormLayout, QHBoxLayout,
-    QVBoxLayout, QLineEdit, QLayout, QPushButton, QCheckBox, QComboBox, 
-    QSpinBox, QStackedLayout, QStackedWidget, QFileDialog
-    )
-from isu.models.demo import Demo
-from isu.operation import Crop, Op
-from isu.ui.ops.ops import OpUi
-from isu.ui import UiLoad
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from isu.ui.crop import Ui_cropOp
 
-class CropOp(OpUi, QWidget):
+class CropJob(QRunnable):
 
-    uifile = QDir(os.path.dirname(os.path.realpath(__file__)))
+    def __init__(self, x: int, y: int, w: int, h: int) -> None:
+        super(CropJob, self).__init__()
+
+    def run(self: QRunnable) -> None:
+        return super().run()
+
+class CropOp(QWidget, Ui_cropOp):
 
     def __init__(self, parent: QWidget | None) -> None:
         QWidget.__init__(self, parent)
-        UiLoad().loadUi("crop.ui", self, parent)
-        self.load_ui()
-        self.load_widgets()
+        self.setupUi(self)
+        self.title: str = "Crop Demo"
+        self.loadWidgets()
 
-    def load_ui(self):
-        pass
+    @staticmethod
+    def job() -> Type[QRunnable]:
+        return CropJob
 
-    def load_widgets(self):
+    def run(self) -> QRunnable:
+        return CropJob(
+            x=self.cropSpinX.value(),
+            y=self.cropSpinY.value(),
+            w=self.cropSpinW.value(),
+            h=self.cropSpinH.value()
+        )
+
+    def loadWidgets(self):
         self.cropSpinX: QSpinBox
         self.cropSpinY: QSpinBox
         self.cropSpinW: QSpinBox
         self.cropSpinH: QSpinBox
 
-    def op(self) -> Crop:
-        return Crop(
-            # apply_to=apply_to, 
-            # all_steps=all_steps,
-            # demo=demo,
-            x=self.cropSpinX.value(),
-            y=self.cropSpinY.value(),
-            width=self.cropSpinW.value(),
-            height=self.cropSpinH.value()
-        )
+
+show(__name__, CropOp)

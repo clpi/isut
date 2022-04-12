@@ -15,6 +15,26 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QLabel" name="noopLabel">
+     <property name="font">
+      <font>
+       <family>Segoe UI Variable Display Semil</family>
+       <pointsize>14</pointsize>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>No ops added!</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="verticalGroupBox">
      <property name="title">
       <string>Load the automation target</string>
@@ -28,6 +48,12 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Segoe Fluent Icons</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Try loading a demo below:</string>
         </property>
@@ -35,6 +61,21 @@
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
@@ -56,10 +97,14 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="placeholderText">
+           <string>Path of loaded demo</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="loadDemoBtn">
           <property name="text">
            <string>Browse</string>
           </property>
@@ -73,7 +118,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>GroupBox</string>
+      <string>Select a task</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
@@ -86,6 +131,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="font">
+           <font>
+            <family>Segoe Fluent Icons</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Try selecting a task to perform:</string>
           </property>
@@ -93,6 +144,18 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
           <item>
            <widget class="QLabel" name="label_6">
             <property name="text">
@@ -105,6 +168,9 @@
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
             <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
@@ -114,12 +180,9 @@
            </spacer>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_2">
-            <property name="text">
-             <string>Browse</string>
+           <widget class="QComboBox" name="taskCombo">
+            <property name="placeholderText">
+             <string>Shell</string>
             </property>
            </widget>
           </item>

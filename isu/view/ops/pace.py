@@ -1,43 +1,47 @@
 import os, sys
-from isu.ui import UiLoad
-from typing import Optional, Any
+from pathlib import WindowsPath, Path
+from isu.utils import show
+from typing import Optional, Any, Type
 from PIL import Image
-from isu.models.demo import Demo
-from isu.operation import Pace
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale, QDir,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (
-    QApplication, QSizePolicy, QWidget, QLabel, QFormLayout, QHBoxLayout,
-    QVBoxLayout, QLineEdit, QLayout, QPushButton, QCheckBox, QComboBox, 
-    QSpinBox, QStackedLayout, QStackedWidget, QFileDialog
-    )
-from isu.ui.ops.ops import OpUi
-from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from isu.ui.pace import Ui_paceOp
 
-class PaceOp(OpUi, QWidget):
+class PaceJob(QRunnable):
+
+    def __init__(self):
+        super(PaceJob, self).__init__()
+
+    def run(self: QRunnable) -> None:
+        return super().run()
+
+class PaceOp(QWidget, Ui_paceOp):
 
     def __init__(self, parent: QWidget | None) -> None:
-        QWidget.__init__(self, parent)
-        UiLoad().loadUi("pace.ui", self, parent)
-        self.load_widgets()
-
-    def load_widgets(self):
-        pass
+        super(PaceOp, self).__init__(parent)
+        self.setupUi(self)
+        self.title: str = "Attach Pace"
 
     @staticmethod
-    def cbidx() -> int:
-        return 6
+    def job() -> Type[QRunnable]:
+        return PaceJob
 
-    def op(self) -> Pace:
-        return Pace()
+    def run(self) -> QRunnable:
+        a = PaceJob()
+        return a
 
-    def loadUi(self):
+    def load_ui(self):
+        pass
+
+    def load_widgets(self):
         # self.opsParamsStack.addWidget(self)
 
         # self.shellBrowseImgBtn.clicked.connect(self.browse_shell)
         pass
+
+    @staticmethod
+    def cbidx() -> int:
+        return 3
+
+show(__name__, PaceOp)

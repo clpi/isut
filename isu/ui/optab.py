@@ -17,14 +17,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
     QHBoxLayout, QLabel, QLayout, QLineEdit,
-    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
-    QToolButton, QVBoxLayout, QWidget)
+    QSizePolicy, QSpacerItem, QSpinBox, QToolButton,
+    QVBoxLayout, QWidget)
 
-class Ui_opTab(object):
+class Ui_opsWidget(object):
     def setupUi(self, opsWidget):
         if not opsWidget.objectName():
             opsWidget.setObjectName(u"opsWidget")
-        opsWidget.resize(498, 576)
+        opsWidget.resize(489, 576)
         self.verticalLayout_4 = QVBoxLayout(opsWidget)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.horizontalLayout_5 = QHBoxLayout()
@@ -51,10 +51,10 @@ class Ui_opTab(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
 
-        self.spinBox = QSpinBox(self.verticalGroupBox_3)
-        self.spinBox.setObjectName(u"spinBox")
+        self.stepIndexSpin = QSpinBox(self.verticalGroupBox_3)
+        self.stepIndexSpin.setObjectName(u"stepIndexSpin")
 
-        self.horizontalLayout_2.addWidget(self.spinBox)
+        self.horizontalLayout_2.addWidget(self.stepIndexSpin)
 
         self.label_6 = QLabel(self.verticalGroupBox_3)
         self.label_6.setObjectName(u"label_6")
@@ -87,18 +87,18 @@ class Ui_opTab(object):
 
         self.horizontalLayout.addWidget(self.label_4)
 
-        self.comboBox_2 = QComboBox(self.verticalGroupBox_3)
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setObjectName(u"comboBox_2")
+        self.taskCombo = QComboBox(self.verticalGroupBox_3)
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.addItem("")
+        self.taskCombo.setObjectName(u"taskCombo")
 
-        self.horizontalLayout.addWidget(self.comboBox_2)
+        self.horizontalLayout.addWidget(self.taskCombo)
 
         self.toolButton = QToolButton(self.verticalGroupBox_3)
         self.toolButton.setObjectName(u"toolButton")
@@ -124,15 +124,15 @@ class Ui_opTab(object):
 
         self.targetLayout.addWidget(self.label_5)
 
-        self.comboBox = QComboBox(self.verticalGroupBox_3)
-        self.comboBox.setObjectName(u"comboBox")
+        self.demoCombo = QComboBox(self.verticalGroupBox_3)
+        self.demoCombo.setObjectName(u"demoCombo")
 
-        self.targetLayout.addWidget(self.comboBox)
+        self.targetLayout.addWidget(self.demoCombo)
 
-        self.toolButton_2 = QToolButton(self.verticalGroupBox_3)
-        self.toolButton_2.setObjectName(u"toolButton_2")
+        self.loadDemoBtn = QToolButton(self.verticalGroupBox_3)
+        self.loadDemoBtn.setObjectName(u"loadDemoBtn")
 
-        self.targetLayout.addWidget(self.toolButton_2)
+        self.targetLayout.addWidget(self.loadDemoBtn)
 
 
         self.verticalLayout_2.addLayout(self.targetLayout)
@@ -166,25 +166,25 @@ class Ui_opTab(object):
 
         self.verticalLayout_5.addWidget(self.allStepsCheck)
 
-        self.checkBox_2 = QCheckBox(self.verticalGroupBox_2)
-        self.checkBox_2.setObjectName(u"checkBox_2")
+        self.allStepsMarkedCheck = QCheckBox(self.verticalGroupBox_2)
+        self.allStepsMarkedCheck.setObjectName(u"allStepsMarkedCheck")
 
-        self.verticalLayout_5.addWidget(self.checkBox_2)
+        self.verticalLayout_5.addWidget(self.allStepsMarkedCheck)
 
-        self.checkBox = QCheckBox(self.verticalGroupBox_2)
-        self.checkBox.setObjectName(u"checkBox")
+        self.allMarkedCheck = QCheckBox(self.verticalGroupBox_2)
+        self.allMarkedCheck.setObjectName(u"allMarkedCheck")
 
-        self.verticalLayout_5.addWidget(self.checkBox)
+        self.verticalLayout_5.addWidget(self.allMarkedCheck)
 
         self.matchSubstringCheck = QCheckBox(self.verticalGroupBox_2)
         self.matchSubstringCheck.setObjectName(u"matchSubstringCheck")
 
         self.verticalLayout_5.addWidget(self.matchSubstringCheck)
 
-        self.lineEdit = QLineEdit(self.verticalGroupBox_2)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.titleSubstr = QLineEdit(self.verticalGroupBox_2)
+        self.titleSubstr.setObjectName(u"titleSubstr")
 
-        self.verticalLayout_5.addWidget(self.lineEdit)
+        self.verticalLayout_5.addWidget(self.titleSubstr)
 
 
         self.horizontalLayout_5.addWidget(self.verticalGroupBox_2)
@@ -192,22 +192,19 @@ class Ui_opTab(object):
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_5)
 
-        self.groupBox = QGroupBox(opsWidget)
-        self.groupBox.setObjectName(u"groupBox")
-        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.opParamsFrame = QGroupBox(opsWidget)
+        self.opParamsFrame.setObjectName(u"opParamsFrame")
+        self.verticalLayout = QVBoxLayout(self.opParamsFrame)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.stepParams = QStackedWidget(self.groupBox)
-        self.stepParams.setObjectName(u"stepParams")
-        self.stepParamsVl = QWidget()
-        self.stepParamsVl.setObjectName(u"stepParamsVl")
-        self.verticalLayout_7 = QVBoxLayout(self.stepParamsVl)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.stepParams.addWidget(self.stepParamsVl)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.opParamsLayout = QVBoxLayout()
+        self.opParamsLayout.setObjectName(u"opParamsLayout")
 
-        self.verticalLayout.addWidget(self.stepParams)
+        self.verticalLayout.addLayout(self.opParamsLayout)
 
 
-        self.verticalLayout_4.addWidget(self.groupBox)
+        self.verticalLayout_4.addWidget(self.opParamsFrame)
 
 
         self.retranslateUi(opsWidget)
@@ -216,32 +213,32 @@ class Ui_opTab(object):
     # setupUi
 
     def retranslateUi(self, opsWidget):
-        self.verticalGroupBox_3.setTitle(QCoreApplication.translate("opTab", u"Task Info", None))
-        self.label_3.setText(QCoreApplication.translate("opTab", u"Index", None))
-        self.label_6.setText(QCoreApplication.translate("opTab", u"Index:", None))
-        self.toolButton_3.setText(QCoreApplication.translate("opTab", u"...", None))
-        self.label_2.setText(QCoreApplication.translate("opTab", u"Task", None))
-        self.label_4.setText(QCoreApplication.translate("opTab", u"Current:", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("opTab", u"Shell", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("opTab", u"Insert", None))
-        self.comboBox_2.setItemText(2, QCoreApplication.translate("opTab", u"Crop", None))
-        self.comboBox_2.setItemText(3, QCoreApplication.translate("opTab", u"Section", None))
-        self.comboBox_2.setItemText(4, QCoreApplication.translate("opTab", u"Add Audio", None))
-        self.comboBox_2.setItemText(5, QCoreApplication.translate("opTab", u"Pacing", None))
-        self.comboBox_2.setItemText(6, QCoreApplication.translate("opTab", u"Add Text", None))
-        self.comboBox_2.setItemText(7, QCoreApplication.translate("opTab", u"Render", None))
+        self.verticalGroupBox_3.setTitle(QCoreApplication.translate("opsWidget", u"Task Info", None))
+        self.label_3.setText(QCoreApplication.translate("opsWidget", u"Index", None))
+        self.label_6.setText(QCoreApplication.translate("opsWidget", u"Index:", None))
+        self.toolButton_3.setText(QCoreApplication.translate("opsWidget", u"...", None))
+        self.label_2.setText(QCoreApplication.translate("opsWidget", u"Task", None))
+        self.label_4.setText(QCoreApplication.translate("opsWidget", u"Current:", None))
+        self.taskCombo.setItemText(0, QCoreApplication.translate("opsWidget", u"Shell", None))
+        self.taskCombo.setItemText(1, QCoreApplication.translate("opsWidget", u"Insert", None))
+        self.taskCombo.setItemText(2, QCoreApplication.translate("opsWidget", u"Crop", None))
+        self.taskCombo.setItemText(3, QCoreApplication.translate("opsWidget", u"Section", None))
+        self.taskCombo.setItemText(4, QCoreApplication.translate("opsWidget", u"Add Audio", None))
+        self.taskCombo.setItemText(5, QCoreApplication.translate("opsWidget", u"Pacing", None))
+        self.taskCombo.setItemText(6, QCoreApplication.translate("opsWidget", u"Add Text", None))
+        self.taskCombo.setItemText(7, QCoreApplication.translate("opsWidget", u"Render", None))
 
-        self.toolButton.setText(QCoreApplication.translate("opTab", u"...", None))
-        self.label.setText(QCoreApplication.translate("opTab", u"Target", None))
-        self.label_5.setText(QCoreApplication.translate("opTab", u"Demo:", None))
-        self.toolButton_2.setText(QCoreApplication.translate("opTab", u"...", None))
-        self.verticalGroupBox_2.setTitle(QCoreApplication.translate("opTab", u"Step Targets", None))
-        self.allDemoCheck.setText(QCoreApplication.translate("opTab", u"Apply to all demos", None))
-        self.allStepsCheck.setText(QCoreApplication.translate("opTab", u"Apply to all steps", None))
-        self.checkBox_2.setText(QCoreApplication.translate("opTab", u"Apply to all steps of marked sections", None))
-        self.checkBox.setText(QCoreApplication.translate("opTab", u"Apply to marked steps", None))
-        self.matchSubstringCheck.setText(QCoreApplication.translate("opTab", u"Apply to steps with title containing:", None))
-        self.groupBox.setTitle(QCoreApplication.translate("opTab", u"Parameters", None))
+        self.toolButton.setText(QCoreApplication.translate("opsWidget", u"...", None))
+        self.label.setText(QCoreApplication.translate("opsWidget", u"Target", None))
+        self.label_5.setText(QCoreApplication.translate("opsWidget", u"Demo:", None))
+        self.loadDemoBtn.setText(QCoreApplication.translate("opsWidget", u"...", None))
+        self.verticalGroupBox_2.setTitle(QCoreApplication.translate("opsWidget", u"Step Targets", None))
+        self.allDemoCheck.setText(QCoreApplication.translate("opsWidget", u"Apply to all demos", None))
+        self.allStepsCheck.setText(QCoreApplication.translate("opsWidget", u"Apply to all steps", None))
+        self.allStepsMarkedCheck.setText(QCoreApplication.translate("opsWidget", u"Apply to all steps of marked sections", None))
+        self.allMarkedCheck.setText(QCoreApplication.translate("opsWidget", u"Apply to marked steps", None))
+        self.matchSubstringCheck.setText(QCoreApplication.translate("opsWidget", u"Apply to steps with title containing:", None))
+        self.opParamsFrame.setTitle(QCoreApplication.translate("opsWidget", u"Parameters", None))
         pass
     # retranslateUi
 

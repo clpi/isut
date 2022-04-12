@@ -6,8 +6,9 @@ from .pace import Ui_paceOp
 from .prefs import Ui_prefsDialog
 from .prog import Ui_progDialog
 from .render import Ui_renderOp
-from .optab import Ui_opTab
+from .optab import Ui_opsWidget
 from .section import Ui_sectionOp
 from .text import Ui_textOp
 from .window import Ui_MainWindow
 from .shell import Ui_shellOp
+from .window import Ui_MainWindow

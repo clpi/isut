@@ -3,11 +3,19 @@ from isu import utils
 from PySide6.QtWidgets import *
 from isu.view import UiLoader
 from isu.ui.noop import Ui_noOp
+from isu.models.demo.load import DemoLoad
 
 class Nop(QGroupBox, Ui_noOp):
+
+    loadedDemo = Signal(DemoLoad)
+
     def __init__(self, parent = None):
         super(Nop, self).__init__()
-        # UiLoader().loadUi("isu/ui/ops/noop.ui", self)
         self.setupUi(self)
+        self.loadWidgets()
+
+    def loadWidgets(self):
+        self.taskCombo: QComboBox
+        self.loadDemoBtn: QPushButton
 
 utils.show(__name__, Nop)

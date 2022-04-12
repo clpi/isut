@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>opTab</class>
+ <class>opsWidget</class>
  <widget class="QWidget" name="opsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>498</width>
+    <width>489</width>
     <height>576</height>
    </rect>
   </property>
@@ -54,7 +54,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox"/>
+           <widget class="QSpinBox" name="stepIndexSpin"/>
           </item>
           <item>
            <widget class="QLabel" name="label_6">
@@ -108,7 +108,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_2">
+           <widget class="QComboBox" name="taskCombo">
             <item>
              <property name="text">
               <string>Shell</string>
@@ -190,10 +190,10 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="demoCombo"/>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButton_2">
+           <widget class="QToolButton" name="loadDemoBtn">
             <property name="text">
              <string>...</string>
             </property>
@@ -259,14 +259,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_2">
+         <widget class="QCheckBox" name="allStepsMarkedCheck">
           <property name="text">
            <string>Apply to all steps of marked sections</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="allMarkedCheck">
           <property name="text">
            <string>Apply to marked steps</string>
           </property>
@@ -280,7 +280,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="titleSubstr"/>
         </item>
        </layout>
       </widget>
@@ -288,17 +288,28 @@
     </layout>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="opParamsFrame">
      <property name="title">
       <string>Parameters</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QStackedWidget" name="stepParams">
-        <widget class="QWidget" name="stepParamsVl">
-         <layout class="QVBoxLayout" name="verticalLayout_7"/>
-        </widget>
-       </widget>
+       <layout class="QVBoxLayout" name="opParamsLayout"/>
       </item>
      </layout>
     </widget>

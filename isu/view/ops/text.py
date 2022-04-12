@@ -1,39 +1,42 @@
 import os, sys
-from typing import Optional
+from isu import utils
+from pathlib import WindowsPath, Path
+from typing import Optional, Any, Type
 from PIL import Image
-from PySide6.QtCore import (
-    Signal, Slot, QEnum,
-    QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (
-    QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (
-    QApplication, QSizePolicy, QWidget, QLabel, QFormLayout, QHBoxLayout,
-    QVBoxLayout, QLineEdit, QLayout, QPushButton, QCheckBox, QComboBox, 
-    QSpinBox, QStackedLayout, QStackedWidget, QFileDialog
-    )
-from PySide6 import QtUiTools
-from isu.ui import UiLoad
-from isu.ui.ops import OpUi
-from isu.models.demo import Demo
-from isu.operation.text import Text
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from isu.ui.text import Ui_textOp
 
-class TextOp(OpUi, QWidget):
+class TextJob(QRunnable):
 
-    def __init__(self, parent: Optional[QWidget] = None, index: int = 0):
-        QWidget.__init__(self, parent)
-        UiLoad().loadUi("isu/ui/ops/text.ui", self, parent)
-        self.loadUi()
+    def __init__(self) -> None:
+        super(TextJob, self).__init__()
 
-    def loadUi(self):
-        # self.opsParamsStack.addWidget(self)
+    def run(self: QRunnable) -> None:
+        return super().run()
 
-        # self.shellBrowseImgBtn.clicked.connect(self.browse_shell)
+class TextOp(QTabWidget, Ui_textOp):
+
+    def __init__(self, parent = None) -> None:
+        super(TextOp, self).__init__(parent)
+        self.setupUi(self)
+        self.title: str = "Text"
+        self.loadWidgets()
+        self.loadConnections()
+
+    @staticmethod
+    def job() -> Type[QRunnable]:
+        return TextJob
+
+    def run(self) -> QRunnable:
+        return TextJob(
+        )
+
+    def loadWidgets(self):
         pass
 
-    def op(self) -> Text:
-        return Text()
+    def loadConnections(self):
+        pass
+
+utils.show(__name__, TextOp)

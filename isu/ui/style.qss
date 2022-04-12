@@ -1,0 +1,5 @@
+QTabWidget {
+    background-color: #fafafa;
+    border-radius: 5px;
+    color: #333;
+}
