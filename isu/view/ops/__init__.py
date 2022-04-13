@@ -1,11 +1,11 @@
 from isu.actions.op import Op
-from .shell import ShellOp
-from .audio import AudioOp
+from .shell import ShellOp, ShellJob
+from .audio import AudioOp, AudioJob
 from .concat import Concat
-from .crop import CropOp
-from .insert import InsertOp
+from .crop import CropOp, CropJob
+from .insert import InsertOp, InsertJob
 from .nop import Nop
-from .pace import PaceOp
-from .text import TextOp
-from .section import SectionOp
-from .render import RenderOp
+from .pace import PaceOp, PaceJob
+from .text import TextOp, TextJob
+from .section import SectionOp, SectionJob
+from .render import RenderOp, RenderJob

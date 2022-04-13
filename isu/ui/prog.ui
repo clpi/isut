@@ -23,13 +23,22 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>Executing...</string>
+      <string>Executing Tasks... </string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Currently executing op ? (type ?) of ? ops</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
       </item>
@@ -120,16 +129,32 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>ProgDialog</receiver>
-   <slot>reject()</slot>
+   <receiver>progressBar</receiver>
+   <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>357</x>
+     <x>325</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>progressBar_2</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
      <y>272</y>
     </hint>
     <hint type="destinationlabel">
-     <x>376</x>
-     <y>372</y>
+     <x>205</x>
+     <y>177</y>
     </hint>
    </hints>
   </connection>

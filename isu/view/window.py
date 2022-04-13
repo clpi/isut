@@ -1,10 +1,11 @@
 import sys
 from typing import List, MutableSequence
+from isu.models.task import TaskTableItem
 from PySide6.QtCore import *
 from isu.utils import show, browseFile, browseDir
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
-from isu.view.task import TaskTab
+from isu.view.task import TaskTab, TaskTabs, opFromIdx
 from isu.view.ops import Nop
 from isu.ui.window import Ui_MainWindow
 from isu.view.dialog import About, Preferences, Progress
@@ -16,6 +17,9 @@ class Win(QMainWindow, Ui_MainWindow):
     demoAdded = Signal()
     scriptAdded = Signal()
 
+    steps = []
+    demoList = []
+
     def __init__(self, parent = None):
         super(Win, self).__init__()
         self.steps: MutableSequence[TaskTab] = []
@@ -25,6 +29,7 @@ class Win(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.loadWin()
         self.loadSteps()
+        self.loadTables()
         self.loadStatus()
         self.loadConnections()
         self.loadViews()
@@ -32,10 +37,16 @@ class Win(QMainWindow, Ui_MainWindow):
     def loadWin(self):
         self.setAcceptDrops(True)
         self.setUpdatesEnabled(True)
-        self.setWindowIcon(QIcon(':/qt-project.org/logos/pysidelogo.png'))
-        self.setWindowIcon(self.style().standardIcon(QStyle.SP_CommandLink))
+        self.setWindowIcon(self.style().standardIcon(QStyle.SP_DialogApplyButton))
+        self.setAnimated(True)
+
+    def loadTables(self):
+        # self.taskStepsTable.setModel(TaskTableItem)
+        self.taskStepsTable.setCornerButtonEnabled(True)
+        self.taskStepsTable.setUpdatesEnabled(True)
 
     def loadViews(self):
+        # --------- DATA LOADED (top left) ------
         self.dataLoadTabs: QTabWidget
 
         self.demoLoadedTab: QWidget
@@ -55,30 +66,78 @@ class Win(QMainWindow, Ui_MainWindow):
         self.scriptsLoadedLabel: QLabel
         self.scriptLoadBtn: QPushButton
         self.browseScriptBtn: QPushButton
+
+        # --------- TASK DATA (bot left) ---------
+        self.taskTabs: QTabWidget
         self.runStepsBtn: QPushButton
 
-        self.opsTabs: QTabWidget
-        self.opsView: QVBoxLayout
+        self.stepUpBtn: QPushButton
+        self.stepDownBtn: QPushButton
 
         self.taskStepsTable: QTableWidget
 
+        # --------- OPS TABS (middle) ----------
+        self.opsTabs: QTabWidget
+        self.opsLayout: QVBoxLayout
+
+
+        # ------- DEMO INFO (top right) -------
         self.demoViewTabs: QTabWidget
+        self.demoStepsLabel: QLabel
+        self.addDemoStepBtn: QPushButton
+        self.delDemoStepBtn: QPushButton
+        self.demoStepsOptBtn: QToolButton
+
+        self.demoUpBtn: QPushButton
+        self.demoDownBtn: QPushButton
+        self.demoDeleteBtn: QPushButton
+        self.demoEtcBtn: QToolButton
+        self.demoCopyBtn: QPushButton
+        self.demoStepsTree: QTreeWidget
+
         self.demoMetadataTab: QWidget
 
+        # ------- SELECTION INFO (bot right) ------
+        self.propTabs: QTabWidget
+        self.propTabs.setMinimumWidth(375)
+        self.propsTab: QWidget
+        self.propsStack: QStackedWidget
+
+        self.stepPropsPage: QWidget
+        self.stepPropsLabel: QLabel
+        self.stepPropsOptsBtn: QToolButton
+        self.stepPropsInfoBtn: QPushButton
+        self.stepPropsResetBtn: QPushButton
+        self.stepPropsTable: QTableWidget
+
+
+        self.sectPropsPage: QWidget
+        self.sectPropsLabel: QLabel
+        self.sectPropsOptsBtn: QToolButton
+        self.sectPropsInfoBtn: QPushButton
+        self.sectPropsResetBtn: QPushButton
+        self.sectPropsTable: QTableWidget
+
+        self.previewTab: QWidget
+        self.previewGfx: QGraphicsView
 
     def loadStatus(self):
         self.statusBar: QStatusBar
         self.statusBar().showMessage("Ready", 2000)
 
     def loadSteps(self):
-        self.opsView: QVBoxLayout
+        self.opsLayout: QVBoxLayout
         self.opsTabs: QTabWidget
         self.setNoop()
 
     def loadConnections(self):
-        self.actionAbout.triggered.connect(self.showAbout)
+        # self.actionNewStep.triggered.connect(self.addStep)
+        # self.actionRun.triggered.connect(self.runSteps)
         self.actionPreferences.triggered.connect(self.showPrefs)
-        self.actionNew.triggered.connect(self.show_about)
+        self.actionAbout.triggered.connect(self.showAbout)
+        self.actionOpenDemo.triggered.connect(self.browseDemo)
+        self.actionOpenAudio.triggered.connect(self.browseAudioDir)
+        self.actionOpenScript.triggered.connect(self.browseScript)
 
         self.runStepsBtn.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
         self.runStepsBtn.clicked.connect(self.showProgress)
@@ -91,6 +150,7 @@ class Win(QMainWindow, Ui_MainWindow):
         self.demoLoadBtn.clicked.connect(self.browseDemo)
         self.scriptLoadBtn.clicked.connect(self.browseScript)
 
+        self.addStepBtn.setIcon(self.style().standardIcon(QStyle.SP_CustomBase))
         self.addStepBtn.clicked.connect(self.addStepBtnClicked)
 
     @Slot()
@@ -110,8 +170,9 @@ class Win(QMainWindow, Ui_MainWindow):
         self.taskStepsTable.setCellWidget(index, 2, QLabel("[DEMO]"))
         self.taskStepsTable.selectRow(index)
         self.opsTabs.addTab(self.steps[index], self.steps[index].title)
+        # self.disconnect()
         self.opsTabs.setCurrentIndex(index)
-        self.opsTabs.widget(index).taskChanged.connect(self.onTaskChanged)
+        self.connect()
 
     def setNoop(self):
         self.opsTabs.clear()
@@ -120,10 +181,26 @@ class Win(QMainWindow, Ui_MainWindow):
         self.opsTabs.addTab(Nop(parent=self.opsTabs), "No Op")
 
     @Slot(int)
-    def onTaskChanged(self, index: int):
+    def onStepTaskChanged(self, task_idx: int):
+        self.opsTabs.currentWidget().onTaskChanged(task_idx)
+        row = self.taskStepsTable.currentRow()
+        title = self.opsTabs.currentWidget().title
+        self.taskStepsTable.setItem(row, 2, QTableWidgetItem(title))
+        self.setWindowTitle("Isu: " + str(title))
+
+    @Slot(int)
+    def onStepChanged(self, index: int):
         self.opsTabs.setCurrentIndex(index)
-        self.opsTabs.widget(index).taskChanged.connect(self.onTaskChanged)
-        self.opsTabs.widget(index).demoChanged.connect(self.onDemoChanged)
+
+    def connect(self):
+        self.opsTabs.currentWidget().taskChanged.connect(self.onStepTaskChanged)
+        self.opsTabs.currentWidget().demoChanged.connect(self.onDemoChanged)
+        self.opsTabs.currentWidget().currentStepIndexChanged.connect(self.onStepChanged)
+
+    def disconnect(self):
+        self.opsTabs.currentWidget().taskChanged.disconnect(self.onStepTaskChanged)
+        self.opsTabs.currentWidget().demoChanged.disconnect(self.onDemoChanged)
+        self.opsTabs.currentWidget().currentStepIndexChanged.disconnect(self.onStepChanged)
 
     @Slot(int)
     def onDemoChanged(self, index: int):
@@ -134,10 +211,6 @@ class Win(QMainWindow, Ui_MainWindow):
         self.taskStepsTable.removeRow(index)
         if self.opsTabs.count() == 0:
             self.setNoop()
-
-    @Slot(int)
-    def onTableRowDeleted(self, index: int):
-        self.opsTabs.removeTab(index)
 
     @Slot(int, int)
     def onTabMoved(self, index: int, final: int):
@@ -156,7 +229,7 @@ class Win(QMainWindow, Ui_MainWindow):
         self.opsTabs.setCurrentIndex(index)
 
     @Slot(int)
-    def onTaskRowDeleted(self, index: int):
+    def onTableRowDeleted(self, index: int):
         self.opsTabs.removeTab(index)
 
     @Slot()
@@ -191,14 +264,6 @@ class Win(QMainWindow, Ui_MainWindow):
     def showAbout(self):
         a = About(parent=self)
         a.show()
-
-    @Slot()
-    def showProgress(self):
-        p = Progress(parent=self)
-        p.show()
-
-    @Slot()
-    def show_about(self):
         QMessageBox.about(
             self,
             "About Sample Editor",
@@ -208,9 +273,20 @@ class Win(QMainWindow, Ui_MainWindow):
             "<p>- Python</p>",
         )
 
-show(__name__, Win)
+    @Slot()
+    def showProgress(self):
+        p = Progress(parent=self)
+        p.show()
 
-    # a = QApplication()
-    # w=Win()
-    # w.show()
-    # a.exec()
+    def selectedTaskStep(self) -> int:
+        tab_i = self.opsTabs.currentIndex()
+        table_i = self.taskStepsTable.currentRow()
+        return table_i
+
+    def selectedDemo(self) -> int:
+        return self.demoLoadedTree.currentIndex().row()
+
+    def selectedTaskOp(self) -> int:
+        return self.opsTabs.currentIn
+
+show(__name__, Win)

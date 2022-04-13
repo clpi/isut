@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1240</width>
-    <height>760</height>
+    <width>1250</width>
+    <height>780</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,20 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1240</width>
-    <height>760</height>
+    <width>1050</width>
+    <height>780</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>16777203</width>
     <height>16777210</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1250</width>
+    <height>780</height>
    </size>
   </property>
   <property name="font">
@@ -79,24 +85,30 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <property name="baseSize">
+    <size>
+     <width>1250</width>
+     <height>0</height>
+    </size>
+   </property>
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
-     <number>3</number>
+     <number>2</number>
     </property>
     <property name="leftMargin">
-     <number>4</number>
+     <number>2</number>
     </property>
     <property name="topMargin">
-     <number>4</number>
+     <number>2</number>
     </property>
     <property name="rightMargin">
-     <number>4</number>
+     <number>2</number>
     </property>
     <property name="bottomMargin">
-     <number>4</number>
+     <number>2</number>
     </property>
     <item>
      <widget class="QStackedWidget" name="centralTabs">
@@ -131,38 +143,44 @@
          <enum>QLayout::SetMinimumSize</enum>
         </property>
         <property name="leftMargin">
-         <number>3</number>
+         <number>5</number>
         </property>
         <property name="topMargin">
-         <number>3</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>3</number>
+         <number>5</number>
         </property>
         <property name="bottomMargin">
-         <number>3</number>
+         <number>0</number>
         </property>
         <item>
-         <widget class="QSplitter" name="splitter_3">
+         <widget class="QSplitter" name="columnSplitter">
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <widget class="QSplitter" name="splitter">
+          <property name="handleWidth">
+           <number>3</number>
+          </property>
+          <widget class="QSplitter" name="leftSplitter">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-             <horstretch>0</horstretch>
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+             <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>325</width>
+             <width>375</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>375</width>
+             <width>239824</width>
              <height>16777215</height>
             </size>
            </property>
@@ -184,7 +202,7 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>325</width>
+              <width>375</width>
               <height>0</height>
              </size>
             </property>
@@ -200,6 +218,11 @@
               <height>0</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <kerning>false</kerning>
+             </font>
+            </property>
             <property name="statusTip">
              <string/>
             </property>
@@ -212,24 +235,42 @@
             <property name="currentIndex">
              <number>0</number>
             </property>
+            <property name="elideMode">
+             <enum>Qt::ElideLeft</enum>
+            </property>
             <widget class="QWidget" name="demoLoadedTab">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>325</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
-               <width>375</width>
+               <width>16777215</width>
                <height>16777215</height>
               </size>
              </property>
+             <property name="baseSize">
+              <size>
+               <width>350</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="statusTip">
-              <string>Currently loaded demos available to edit</string>
+              <string/>
              </property>
              <attribute name="title">
               <string>Demo</string>
+             </attribute>
+             <attribute name="toolTip">
+              <string>Loaded demo files</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_34">
               <property name="spacing">
@@ -320,11 +361,29 @@
               </item>
               <item>
                <widget class="QTableWidget" name="demoLoadedTree">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="minimumSize">
+                 <size>
+                  <width>325</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="baseSize">
                  <size>
                   <width>350</width>
                   <height>0</height>
                  </size>
+                </property>
+                <property name="statusTip">
+                 <string>Currently loaded demos available to edit</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Sunken</enum>
                 </property>
                 <column>
                  <property name="text">
@@ -350,6 +409,9 @@
                 </property>
                 <item>
                  <widget class="QPushButton" name="demoRecentBtn">
+                  <property name="statusTip">
+                   <string>Open recently loaded .demo file</string>
+                  </property>
                   <property name="text">
                    <string>Recent</string>
                   </property>
@@ -366,6 +428,9 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="demoSavedBtn">
+                  <property name="statusTip">
+                   <string>Open a saved .demo file/list of .demo files</string>
+                  </property>
                   <property name="text">
                    <string>Saved</string>
                   </property>
@@ -390,8 +455,11 @@
                   <property name="text">
                    <string>...</string>
                   </property>
+                  <property name="checkable">
+                   <bool>false</bool>
+                  </property>
                   <property name="popupMode">
-                   <enum>QToolButton::MenuButtonPopup</enum>
+                   <enum>QToolButton::InstantPopup</enum>
                   </property>
                   <property name="toolButtonStyle">
                    <enum>Qt::ToolButtonTextOnly</enum>
@@ -400,7 +468,7 @@
                    <bool>false</bool>
                   </property>
                   <property name="arrowType">
-                   <enum>Qt::DownArrow</enum>
+                   <enum>Qt::NoArrow</enum>
                   </property>
                  </widget>
                 </item>
@@ -410,15 +478,21 @@
             </widget>
             <widget class="QWidget" name="audioLoadedTab">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="maximumSize">
               <size>
-               <width>375</width>
+               <width>16777215</width>
                <height>16777215</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>350</width>
+               <height>0</height>
               </size>
              </property>
              <property name="statusTip">
@@ -554,7 +628,13 @@
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="scriptsLoadedTab">
+            <widget class="QWidget" name="scriptLoadedTab">
+             <property name="baseSize">
+              <size>
+               <width>350</width>
+               <height>0</height>
+              </size>
+             </property>
              <attribute name="title">
               <string>Script</string>
              </attribute>
@@ -615,7 +695,14 @@
                </layout>
               </item>
               <item>
-               <widget class="QTableWidget" name="scriptsLoadedTree"/>
+               <widget class="QTableWidget" name="scriptsLoadedTree">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
               </item>
               <item>
                <layout class="QHBoxLayout" name="scriptsLoadedBtns">
@@ -676,21 +763,27 @@
            </widget>
            <widget class="QTabWidget" name="taskTabs">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>325</width>
+              <width>375</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>375</width>
+              <width>16777215</width>
               <height>16777215</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>375</width>
+              <height>0</height>
              </size>
             </property>
             <property name="cursor">
@@ -700,13 +793,25 @@
              <string/>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="taskStepsTab">
-             <property name="maximumSize">
+             <property name="minimumSize">
               <size>
                <width>375</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
                <height>16777215</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>375</width>
+               <height>0</height>
               </size>
              </property>
              <attribute name="title">
@@ -751,13 +856,19 @@
                   <property name="text">
                    <string>Loaded Data</string>
                   </property>
+                  <property name="textFormat">
+                   <enum>Qt::MarkdownText</enum>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
                   <property name="indent">
-                   <number>8</number>
+                   <number>0</number>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_11">
+                 <spacer name="horizontalSpacer_12">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -771,6 +882,9 @@
                 </item>
                 <item>
                  <widget class="QComboBox" name="stepTargetCombo">
+                  <property name="statusTip">
+                   <string>Select a target demo as an operand</string>
+                  </property>
                   <property name="placeholderText">
                    <string>Demo</string>
                   </property>
@@ -875,6 +989,11 @@
                 </property>
                 <column>
                  <property name="text">
+                  <string>Index</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
                   <string>Task</string>
                  </property>
                 </column>
@@ -885,7 +1004,7 @@
                 </column>
                 <column>
                  <property name="text">
-                  <string>Steps</string>
+                  <string>Steps Applied</string>
                  </property>
                 </column>
                </widget>
@@ -981,6 +1100,12 @@
              </layout>
             </widget>
             <widget class="QWidget" name="taskHistoryTab">
+             <property name="baseSize">
+              <size>
+               <width>375</width>
+               <height>0</height>
+              </size>
+             </property>
              <attribute name="title">
               <string>History</string>
              </attribute>
@@ -1051,7 +1176,16 @@
                </layout>
               </item>
               <item>
-               <widget class="QTableView" name="tableView_2"/>
+               <widget class="QTreeWidget" name="taskHistoryTree">
+                <property name="midLineWidth">
+                 <number>0</number>
+                </property>
+                <column>
+                 <property name="text">
+                  <string notr="true">1</string>
+                 </property>
+                </column>
+               </widget>
               </item>
               <item>
                <layout class="QHBoxLayout" name="taskHistoryBtns">
@@ -1087,7 +1221,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="taskHistoryEtcBtn">
+                 <widget class="QToolButton" name="toolButton_15">
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -1171,7 +1305,7 @@
             </widget>
            </widget>
           </widget>
-          <widget class="QWidget" name="opsView" native="true">
+          <widget class="QWidget" name="opsLayout" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -1180,7 +1314,7 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>425</width>
+             <width>400</width>
              <height>0</height>
             </size>
            </property>
@@ -1192,7 +1326,7 @@
            </property>
            <property name="baseSize">
             <size>
-             <width>460</width>
+             <width>425</width>
              <height>0</height>
             </size>
            </property>
@@ -1221,16 +1355,22 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QTabWidget" name="opsTabs">
               <property name="enabled">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                <horstretch>8</horstretch>
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>2</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>450</width>
+                <height>0</height>
+               </size>
               </property>
               <property name="baseSize">
                <size>
@@ -1248,22 +1388,22 @@
             </item>
            </layout>
           </widget>
-          <widget class="QSplitter" name="splitter_2">
+          <widget class="QSplitter" name="rightSplitter">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-             <horstretch>0</horstretch>
+            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+             <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize">
             <size>
-             <width>300</width>
+             <width>375</width>
              <height>0</height>
             </size>
            </property>
            <property name="baseSize">
             <size>
-             <width>350</width>
+             <width>375</width>
              <height>0</height>
             </size>
            </property>
@@ -1275,14 +1415,14 @@
              <bool>true</bool>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>8</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>325</width>
+              <width>375</width>
               <height>0</height>
              </size>
             </property>
@@ -1294,7 +1434,7 @@
             </property>
             <property name="baseSize">
              <size>
-              <width>350</width>
+              <width>375</width>
               <height>0</height>
              </size>
             </property>
@@ -1324,10 +1464,16 @@
               <bool>true</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>375</width>
+               <height>0</height>
+              </size>
              </property>
              <attribute name="title">
               <string>Demo Steps</string>
@@ -1406,7 +1552,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="demoStepsOptionsBtn">
+                 <widget class="QToolButton" name="demoStepsOptBtn">
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -1456,38 +1602,38 @@
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QPushButton" name="pushButton_3">
+                 <widget class="QPushButton" name="demoUpBtn">
                   <property name="text">
                    <string>Up</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_4">
+                 <widget class="QPushButton" name="demoDownBtn">
                   <property name="text">
                    <string>Down</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_8">
+                 <widget class="QPushButton" name="demoCopyBtn">
                   <property name="text">
                    <string>Copy</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="dupeDemoStepBtn">
+                 <widget class="QPushButton" name="demoDeleteBtn">
                   <property name="statusTip">
                    <string>Duplicate selected step or section</string>
                   </property>
                   <property name="text">
-                   <string>Duplicate</string>
+                   <string>Delete</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="demoStepsMiscBtn">
+                 <widget class="QToolButton" name="demoMiscBtn">
                   <property name="text">
                    <string>...</string>
                   </property>
@@ -1498,6 +1644,12 @@
              </layout>
             </widget>
             <widget class="QWidget" name="demoMetadataTab">
+             <property name="baseSize">
+              <size>
+               <width>375</width>
+               <height>0</height>
+              </size>
+             </property>
              <attribute name="title">
               <string>Metadata</string>
              </attribute>
@@ -1602,14 +1754,14 @@
            </widget>
            <widget class="QTabWidget" name="propTabs">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>325</width>
+              <width>375</width>
               <height>0</height>
              </size>
             </property>
@@ -1617,6 +1769,12 @@
              <size>
               <width>234243</width>
               <height>16777215</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>375</width>
+              <height>0</height>
              </size>
             </property>
             <property name="font">
@@ -1658,7 +1816,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QStackedWidget" name="propStack">
+               <widget class="QStackedWidget" name="propsStack">
                 <property name="autoFillBackground">
                  <bool>false</bool>
                 </property>
@@ -1668,7 +1826,7 @@
                 <property name="currentIndex">
                  <number>0</number>
                 </property>
-                <widget class="QWidget" name="stepStackPage">
+                <widget class="QWidget" name="stepPropsPage">
                  <layout class="QVBoxLayout" name="verticalLayout_8">
                   <property name="spacing">
                    <number>2</number>
@@ -1686,7 +1844,7 @@
                    <number>2</number>
                   </property>
                   <item>
-                   <layout class="QHBoxLayout" name="stepPageTopBtns">
+                   <layout class="QHBoxLayout" name="stepPropsTopBtns">
                     <property name="spacing">
                      <number>4</number>
                     </property>
@@ -1697,7 +1855,7 @@
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="stepPageLabel">
+                     <widget class="QLabel" name="stepPropsLabel">
                       <property name="text">
                        <string>Step Info</string>
                       </property>
@@ -1717,7 +1875,7 @@
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="stepPageOptionsBtn">
+                     <widget class="QToolButton" name="stepPropsOptsBtn">
                       <property name="text">
                        <string>...</string>
                       </property>
@@ -1726,7 +1884,7 @@
                    </layout>
                   </item>
                   <item>
-                   <widget class="QTableWidget" name="stepPageTable">
+                   <widget class="QTableWidget" name="stepPropsTable">
                     <property name="statusTip">
                      <string>Properties of selected step(s) or section(s)</string>
                     </property>
@@ -1763,16 +1921,16 @@
                    </widget>
                   </item>
                   <item>
-                   <layout class="QHBoxLayout" name="stepPageBtns">
+                   <layout class="QHBoxLayout" name="stepPropsBotBtns">
                     <item>
-                     <widget class="QPushButton" name="stepPageResetBtn">
+                     <widget class="QPushButton" name="stepPropsResetBtn">
                       <property name="text">
                        <string>Reset</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="stepPageInfoBtn">
+                     <widget class="QPushButton" name="stepPropsInfoBtn">
                       <property name="text">
                        <string>More Info</string>
                       </property>
@@ -1782,7 +1940,7 @@
                   </item>
                  </layout>
                 </widget>
-                <widget class="QWidget" name="sectStackPage">
+                <widget class="QWidget" name="sectPropsPage">
                  <layout class="QVBoxLayout" name="verticalLayout_3">
                   <property name="spacing">
                    <number>2</number>
@@ -1800,19 +1958,19 @@
                    <number>2</number>
                   </property>
                   <item>
-                   <layout class="QHBoxLayout" name="sectPageTopBtns">
+                   <layout class="QHBoxLayout" name="sectPropsTopBtns">
                     <property name="spacing">
                      <number>4</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="label_5">
+                     <widget class="QLabel" name="sectPropsLabel">
                       <property name="text">
                        <string>Section Info</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <spacer name="sectPageLabel">
+                     <spacer name="sectPropsSpacer">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
@@ -1825,7 +1983,7 @@
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="sectPageOptionsBtn">
+                     <widget class="QToolButton" name="sectPropsOptBtn">
                       <property name="text">
                        <string>...</string>
                       </property>
@@ -1834,7 +1992,7 @@
                    </layout>
                   </item>
                   <item>
-                   <widget class="QTableWidget" name="sectInfoTable">
+                   <widget class="QTableWidget" name="sectPropsTable">
                     <row>
                      <property name="text">
                       <string>Name</string>
@@ -1853,26 +2011,26 @@
                    </widget>
                   </item>
                   <item>
-                   <layout class="QHBoxLayout" name="sectPageBtns">
+                   <layout class="QHBoxLayout" name="sectPropsBotBtns">
                     <property name="spacing">
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="sectPageResetBtn">
+                     <widget class="QPushButton" name="sectPropsResetBtn">
                       <property name="text">
                        <string>Reset</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="sectPageInfoBtn">
+                     <widget class="QPushButton" name="sectPropsInfoBtn">
                       <property name="text">
                        <string>More Info</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="toolButton_4">
+                     <widget class="QToolButton" name="sectPropsMenuBtn">
                       <property name="text">
                        <string>...</string>
                       </property>
@@ -1907,7 +2065,7 @@
                <number>2</number>
               </property>
               <item>
-               <widget class="QGraphicsView" name="graphicsView"/>
+               <widget class="QGraphicsView" name="previewGfx"/>
               </item>
              </layout>
             </widget>
@@ -1917,7 +2075,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="rawEditor">
+      <widget class="QWidget" name="rawEditorPage">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout"/>
@@ -1956,7 +2114,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1240</width>
+     <width>1250</width>
      <height>22</height>
     </rect>
    </property>
@@ -1974,17 +2132,21 @@
      <property name="title">
       <string>New...</string>
      </property>
-     <addaction name="actionStep"/>
-     <addaction name="actionQueue"/>
+     <addaction name="actionNewStep"/>
+     <addaction name="actionNewQueue"/>
     </widget>
     <addaction name="menuNew"/>
     <addaction name="separator"/>
-    <addaction name="actionSave_Jobs"/>
+    <addaction name="actionOpenJobList"/>
+    <addaction name="actionOpenRecentJobs"/>
+    <addaction name="actionSaveJobs"/>
     <addaction name="separator"/>
-    <addaction name="actionOpen_Demo"/>
-    <addaction name="actionOpen_Audio"/>
-    <addaction name="actionOpen_Script"/>
+    <addaction name="actionOpenDemo"/>
+    <addaction name="actionOpenAudio"/>
+    <addaction name="actionOpenScript"/>
+    <addaction name="actionOpenRecentAsset"/>
     <addaction name="separator"/>
+    <addaction name="actionMinimize"/>
     <addaction name="actionQuit"/>
     <addaction name="separator"/>
    </widget>
@@ -1994,6 +2156,8 @@
     </property>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences_2"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -2032,7 +2196,7 @@
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>Tasks</string>
+     <string>Tools</string>
     </property>
     <property name="separatorsCollapsible">
      <bool>true</bool>
@@ -2047,6 +2211,7 @@
     <addaction name="actionDuplicate_current_task"/>
     <addaction name="actionReset_current_task"/>
     <addaction name="actionRun_current_task"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -2055,7 +2220,7 @@
    <addaction name="menuTasks"/>
    <addaction name="menuHelp"/>
   </widget>
-  <action name="actionStep">
+  <action name="actionNewStep">
    <property name="text">
     <string>Step</string>
    </property>
@@ -2063,7 +2228,7 @@
     <string>Ctrl+Shift+S, Return</string>
    </property>
   </action>
-  <action name="actionOpen_Demo">
+  <action name="actionOpenDemo">
    <property name="text">
     <string>Open Demo</string>
    </property>
@@ -2071,7 +2236,7 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="actionOpen_Audio">
+  <action name="actionOpenAudio">
    <property name="text">
     <string>Open Audio</string>
    </property>
@@ -2079,7 +2244,7 @@
     <string>Ctrl+Shift+O</string>
    </property>
   </action>
-  <action name="actionOpen_Script">
+  <action name="actionOpenScript">
    <property name="text">
     <string>Open Script</string>
    </property>
@@ -2087,7 +2252,7 @@
     <string>Ctrl+Alt+O</string>
    </property>
   </action>
-  <action name="actionSave_Jobs">
+  <action name="actionSaveJobs">
    <property name="text">
     <string>Save Job List</string>
    </property>
@@ -2131,6 +2296,9 @@
    <property name="text">
     <string>Documentation</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+H</string>
+   </property>
   </action>
   <action name="actionAbout">
    <property name="text">
@@ -2140,7 +2308,7 @@
     <string>Ctrl+Shift+A</string>
    </property>
   </action>
-  <action name="actionQueue">
+  <action name="actionNewQueue">
    <property name="text">
     <string>Queue</string>
    </property>
@@ -2264,6 +2432,31 @@
     <string>Reset changes</string>
    </property>
   </action>
+  <action name="actionOpenJobList">
+   <property name="text">
+    <string>Open Job List</string>
+   </property>
+  </action>
+  <action name="actionOpenRecentJobs">
+   <property name="text">
+    <string>Open Recent Job List</string>
+   </property>
+  </action>
+  <action name="actionOpenRecentAsset">
+   <property name="text">
+    <string>Open Recent Asset</string>
+   </property>
+  </action>
+  <action name="actionPreferences_2">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionMinimize">
+   <property name="text">
+    <string>Minimize</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -2279,7 +2472,7 @@
     </hint>
     <hint type="destinationlabel">
      <x>612</x>
-     <y>751</y>
+     <y>770</y>
     </hint>
    </hints>
   </connection>
@@ -2306,12 +2499,140 @@
    <slot>showMenu()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>363</x>
-     <y>81</y>
+     <x>421</x>
+     <y>74</y>
     </hint>
     <hint type="destinationlabel">
-     <x>336</x>
-     <y>80</y>
+     <x>394</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>demoStepsTree</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>stepPropsTable</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>941</x>
+     <y>266</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1013</x>
+     <y>539</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>demoEtcBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>demoEtcBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>452</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>419</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>demoStepsOptBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>demoStepsOptBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1224</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1230</x>
+     <y>59</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>demoMiscBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>demoMiscBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1227</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1228</x>
+     <y>448</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stepPropsResetBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>stepPropsTable</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1015</x>
+     <y>740</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>957</x>
+     <y>631</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>demoStepsTree</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>stepPropsLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>898</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>902</x>
+     <y>518</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stepTargetCombo</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>demoLoadedTree</receiver>
+   <slot>selectRow(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>505</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>251</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>taskStepsTable</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>demoStepsTree</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>337</x>
+     <y>537</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>974</x>
+     <y>222</y>
     </hint>
    </hints>
   </connection>
@@ -2332,6 +2653,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>etcStepsBtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>etcStepsBtn</receiver>
+   <slot>showMenu()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>418</x>
+     <y>741</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>740</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>opsTabs</sender>
    <signal>tabCloseRequested(int)</signal>
    <receiver>taskStepsTable</receiver>
@@ -2348,6 +2685,38 @@
    </hints>
   </connection>
   <connection>
+   <sender>demoLoadedTree</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>stepTargetCombo</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>94</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>321</x>
+     <y>519</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>taskStepsTable</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>demoStepsLabel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>364</x>
+     <y>569</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>899</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>opsTabs</sender>
    <signal>currentChanged(int)</signal>
    <receiver>taskStepsTable</receiver>
@@ -2358,8 +2727,8 @@
      <y>35</y>
     </hint>
     <hint type="destinationlabel">
-     <x>126</x>
-     <y>459</y>
+     <x>124</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>

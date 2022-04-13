@@ -286,7 +286,7 @@ class Ui_textOp(object):
         self.checkBox.clicked["bool"].connect(self.pushButton_3.setEnabled)
         self.checkBox.clicked["bool"].connect(self.label_14.setEnabled)
 
-        textOp.setCurrentIndex(1)
+        textOp.setCurrentIndex(0)
         self.comboBox.setCurrentIndex(3)
 
 

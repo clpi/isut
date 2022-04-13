@@ -38,6 +38,12 @@ class Ui_progDialog(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.label = QLabel(self.groupBox)
         self.label.setObjectName(u"label")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy1)
+        self.label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
 
         self.verticalLayout_2.addWidget(self.label)
 
@@ -73,9 +79,6 @@ class Ui_progDialog(object):
 
         self.horizontalFrame_2 = QFrame(progDialog)
         self.horizontalFrame_2.setObjectName(u"horizontalFrame_2")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.horizontalFrame_2.sizePolicy().hasHeightForWidth())
         self.horizontalFrame_2.setSizePolicy(sizePolicy1)
         self.horizontalLayout_2 = QHBoxLayout(self.horizontalFrame_2)
@@ -101,13 +104,15 @@ class Ui_progDialog(object):
 
 
         self.retranslateUi(progDialog)
+        self.pushButton.clicked.connect(self.progressBar.reset)
+        self.pushButton.clicked.connect(self.progressBar_2.reset)
 
         QMetaObject.connectSlotsByName(progDialog)
     # setupUi
 
     def retranslateUi(self, progDialog):
         progDialog.setWindowTitle(QCoreApplication.translate("progDialog", u"Dialog", None))
-        self.groupBox.setTitle(QCoreApplication.translate("progDialog", u"Executing...", None))
+        self.groupBox.setTitle(QCoreApplication.translate("progDialog", u"Executing Tasks... ", None))
         self.label.setText(QCoreApplication.translate("progDialog", u"Currently executing op ? (type ?) of ? ops", None))
         self.label_2.setText(QCoreApplication.translate("progDialog", u"Task: ?", None))
         self.label_3.setText(QCoreApplication.translate("progDialog", u"Total queue completion", None))

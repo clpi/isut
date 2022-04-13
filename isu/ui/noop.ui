@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>508</height>
+    <height>507</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,11 +39,17 @@
      <property name="title">
       <string>Load the automation target</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>3</number>
+      </property>
       <item>
        <widget class="QLabel" name="label_2">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -51,7 +57,7 @@
         <property name="font">
          <font>
           <family>Segoe Fluent Icons</family>
-          <pointsize>11</pointsize>
+          <pointsize>9</pointsize>
          </font>
         </property>
         <property name="text">
@@ -120,13 +126,19 @@
      <property name="title">
       <string>Select a task</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <property name="spacing">
+       <number>3</number>
+      </property>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <widget class="QLabel" name="label_5">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -134,7 +146,8 @@
           <property name="font">
            <font>
             <family>Segoe Fluent Icons</family>
-            <pointsize>11</pointsize>
+            <pointsize>9</pointsize>
+            <italic>false</italic>
            </font>
           </property>
           <property name="text">

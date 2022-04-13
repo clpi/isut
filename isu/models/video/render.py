@@ -15,7 +15,15 @@ class RenderThread(QThread):
 
     newFrame = Signal(QImage)
     state: State = State.Queued
+    sink: QVideoSink
+    frame: QVideoFrame
+    fformat: QVideoFrameFormat
+
 
     def __init__(self, parent = None):
         QThread.__init__(self, parent)
         self.state = RenderThread.State.Queued
+
+
+    def run(self):
+        pass

@@ -23,7 +23,7 @@ class Ui_noOp(object):
     def setupUi(self, noOp):
         if not noOp.objectName():
             noOp.setObjectName(u"noOp")
-        noOp.resize(400, 508)
+        noOp.resize(400, 507)
         self.verticalLayout = QVBoxLayout(noOp)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.noopLabel = QLabel(noOp)
@@ -40,18 +40,20 @@ class Ui_noOp(object):
 
         self.verticalGroupBox = QGroupBox(noOp)
         self.verticalGroupBox.setObjectName(u"verticalGroupBox")
+        self.verticalGroupBox.setAlignment(Qt.AlignCenter)
         self.verticalLayout_3 = QVBoxLayout(self.verticalGroupBox)
+        self.verticalLayout_3.setSpacing(3)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label_2 = QLabel(self.verticalGroupBox)
         self.label_2.setObjectName(u"label_2")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
         font1 = QFont()
         font1.setFamilies([u"Segoe Fluent Icons"])
-        font1.setPointSize(11)
+        font1.setPointSize(9)
         self.label_2.setFont(font1)
 
         self.verticalLayout_3.addWidget(self.label_2)
@@ -87,7 +89,9 @@ class Ui_noOp(object):
 
         self.groupBox_2 = QGroupBox(noOp)
         self.groupBox_2.setObjectName(u"groupBox_2")
+        self.groupBox_2.setAlignment(Qt.AlignCenter)
         self.verticalLayout_6 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_6.setSpacing(3)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -95,7 +99,11 @@ class Ui_noOp(object):
         self.label_5.setObjectName(u"label_5")
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
         self.label_5.setSizePolicy(sizePolicy)
-        self.label_5.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Segoe Fluent Icons"])
+        font2.setPointSize(9)
+        font2.setItalic(False)
+        self.label_5.setFont(font2)
 
         self.verticalLayout_5.addWidget(self.label_5)
 

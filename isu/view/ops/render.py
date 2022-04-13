@@ -27,10 +27,10 @@ class RenderJob(QRunnable):
     def run(self: QRunnable) -> None:
         return super().run()
 
-class RenderOp(QTabWidget, Ui_renderOp):
+class RenderOp(QWidget, Ui_renderOp):
 
     def __init__(self, parent = None) -> None:
-        super(RenderOp, self).__init__(parent)
+        QWidget.__init__(self, parent)
         self.setupUi(self)
         self.title: str = "Render"
         self.loadWidgets()
@@ -73,7 +73,7 @@ class RenderOp(QTabWidget, Ui_renderOp):
         self.renderOutputDir: QLineEdit
 
     def loadConnections(self):
-        self.renderBrowseDirBtn.toggle.connect(self.browse_dir)
+        self.renderBrowseDirBtn.clicked.connect(self.browse_dir)
 
     @Slot(str, name="renderSetDir")
     def set_dir(self, dir: str):
